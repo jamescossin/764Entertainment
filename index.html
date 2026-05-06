@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>764 Entertainment</title>
+  <link rel="icon" type="image/x-icon" href="764Logo.ico">
+
+  <style>
+
+    :root {
+      --bg: #07090f;
+      --panel: #0f1420;
+      --panel-light: #151c2b;
+      --text: #f4f7fb;
+      --muted: #9ba8bd;
+      --accent: #35d6ff;
+      --accent-2: #8b5cf6;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+
+      background:
+        radial-gradient(circle at top left, rgba(53,214,255,0.16), transparent 35%),
+        radial-gradient(circle at top right, rgba(139,92,246,0.14), transparent 30%),
+        var(--bg);
+
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* NAVBAR */
+
+    .navbar {
+      width: 100%;
+      padding: 22px 8%;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+
+      background: rgba(7,9,15,0.72);
+      backdrop-filter: blur(12px);
+
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .logo {
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+
+      display: flex;
+      align-items: center;
+
+      padding: 150px 8% 90px;
+
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+
+      position: absolute;
+      right: -180px;
+      bottom: -180px;
+
+      width: 620px;
+      height: 620px;
+
+      border-radius: 50%;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(53,214,255,0.42),
+          rgba(139,92,246,0.42)
+        );
+
+      filter: blur(120px);
+      opacity: 0.18;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+
+      text-transform: uppercase;
+      letter-spacing: 3px;
+
+      font-size: 0.78rem;
+      font-weight: 700;
+
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 8vw, 6.5rem);
+
+      line-height: 0.95;
+      letter-spacing: -3px;
+
+      margin-bottom: 28px;
+    }
+
+    .hero p {
+      color: var(--muted);
+
+      max-width: 620px;
+
+      font-size: 1.15rem;
+
+      margin-bottom: 36px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .btn {
+      display: inline-block;
+
+      padding: 14px 22px;
+
+      border-radius: 999px;
+
+      font-weight: 700;
+
+      transition: 0.2s ease;
+
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background:
+        linear-gradient(
+          135deg,
+          var(--accent),
+          var(--accent-2)
+        );
+
+      color: #02040a;
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.08);
+      color: white;
+      backdrop-filter: blur(10px);
+    }
+
+    /* GENERAL */
+
+    section {
+      padding: 90px 8%;
+    }
+
+    .section-header {
+      max-width: 760px;
+      margin-bottom: 40px;
+    }
+
+    .section-header h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+
+      letter-spacing: -1px;
+
+      margin-bottom: 14px;
+    }
+
+    .section-header p {
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .card {
+      background:
+        linear-gradient(
+          180deg,
+          var(--panel-light),
+          var(--panel)
+        );
+
+      border: 1px solid rgba(255,255,255,0.08);
+
+      border-radius: 24px;
+
+      padding: 28px;
+
+      box-shadow:
+        0 20px 60px rgba(0,0,0,0.25);
+    }
+
+    /* ABOUT */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: var(--muted);
+    }
+
+    .info-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .info-item {
+      padding: 22px;
+
+      border-radius: 18px;
+
+      background: rgba(255,255,255,0.035);
+
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .info-item strong {
+      display: block;
+
+      color: var(--accent);
+
+      margin-bottom: 4px;
+    }
+
+    .info-item span {
+      color: var(--muted);
+    }
+
+    /* GAMES */
+
+    .games-grid {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .game-card {
+      position: relative;
+      overflow: hidden;
+
+      width: min(920px, 100%);
+      aspect-ratio: 16 / 8.5;
+
+      display: flex;
+      align-items: flex-end;
+
+      border-radius: 28px;
+
+      padding: 36px;
+
+      border: 1px solid rgba(255,255,255,0.08);
+
+      background-image:
+        linear-gradient(
+          to top,
+          rgba(5,7,12,0.98) 10%,
+          rgba(5,7,12,0.88) 34%,
+          rgba(5,7,12,0.42) 62%,
+          rgba(5,7,12,0.18)
+        ),
+        linear-gradient(
+          to right,
+          rgba(5,7,12,0.72),
+          rgba(5,7,12,0.28),
+          rgba(5,7,12,0.10)
+        ),
+        url("VelocityProtocol.png");
+
+      background-size: cover;
+      background-position: center;
+
+      box-shadow:
+        0 24px 80px rgba(0,0,0,0.45);
+    }
+
+    .game-card::after {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background:
+        radial-gradient(
+          circle at top right,
+          rgba(53,214,255,0.18),
+          transparent 40%
+        );
+
+      pointer-events: none;
+    }
+
+    .game-content {
+      position: relative;
+      z-index: 2;
+
+      max-width: 560px;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+
+      margin-bottom: 18px;
+    }
+
+    .tag {
+      display: inline-block;
+
+      padding: 6px 10px;
+
+      border-radius: 999px;
+
+      background: rgba(53,214,255,0.14);
+
+      border: 1px solid rgba(53,214,255,0.28);
+
+      color: var(--accent);
+
+      font-size: 0.75rem;
+      font-weight: 700;
+
+      text-transform: uppercase;
+      letter-spacing: 1px;
+
+      backdrop-filter: blur(8px);
+    }
+
+    .tag-purple {
+      background: rgba(139,92,246,0.14);
+      border-color: rgba(139,92,246,0.28);
+      color: #c4b5fd;
+    }
+
+    .game-content h3 {
+      font-size: clamp(2.2rem, 5vw, 4rem);
+
+      line-height: 0.95;
+
+      margin-bottom: 16px;
+
+      color: white;
+
+      text-shadow:
+        0 6px 30px rgba(0,0,0,1);
+    }
+
+    .game-content p {
+      color: rgba(255,255,255,0.95);
+
+      font-size: 1.08rem;
+
+      text-shadow:
+        0 3px 18px rgba(0,0,0,1);
+    }
+
+    .website-link {
+      margin-top: 26px;
+
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    /* CONTACT */
+
+    .contact-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    /* FOOTER */
+
+    .footer {
+      padding: 36px 8%;
+
+      border-top: 1px solid rgba(255,255,255,0.08);
+
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+
+      color: var(--muted);
+
+      background: rgba(0,0,0,0.2);
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 800px) {
+
+      html {
+        scroll-padding-top: 0;
+      }
+
+      .navbar {
+        position: static;
+        padding: 18px 6%;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 70px 6% 60px;
+      }
+
+      h1 {
+        font-size: clamp(2.6rem, 14vw, 4.2rem);
+        letter-spacing: -1.5px;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .buttons {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      section {
+        padding: 64px 6%;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .game-card {
+        aspect-ratio: auto;
+        min-height: 430px;
+        padding: 24px;
+        background-position: center;
+      }
+
+      .game-content {
+        max-width: 100%;
+      }
+
+      .game-content h3 {
+        font-size: 2.4rem;
+      }
+
+      .game-content p {
+        font-size: 1rem;
+      }
+
+      .website-link {
+        flex-direction: column;
+      }
+
+      .footer {
+        padding: 28px 6%;
+        flex-direction: column;
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 420px) {
+
+      h1 {
+        font-size: 2.45rem;
+      }
+
+      .eyebrow {
+        font-size: 0.7rem;
+        letter-spacing: 2px;
+      }
+
+      .game-card {
+        min-height: 460px;
+      }
+
+      .tag-row {
+        margin-bottom: 12px;
+      }
+
+      .tag {
+        font-size: 0.68rem;
+        padding: 5px 8px;
+      }
+
+      .game-content h3 {
+        font-size: 2rem;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <header class="navbar">
+
+    <a href="#" class="logo">
+      764 Entertainment
+    </a>
+
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#games">Games</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+  </header>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <div class="eyebrow">
+        Independent Game Studio
+      </div>
+
+      <h1>
+        Games built for speed, style, and flow.
+      </h1>
+
+      <p>
+        764 Entertainment is an independent game studio creating
+        sharp, high-energy games with responsive gameplay,
+        bold worlds, and systems that reward mastery.
+      </p>
+
+      <div class="buttons">
+
+        <a href="#games" class="btn btn-primary">
+          View Our Games
+        </a>
+
+        <a href="#about" class="btn btn-secondary">
+          About the Studio
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+
+  <section id="about">
+
+    <div class="section-header">
+
+      <h2>
+        Who Are We?
+      </h2>
+
+      <p>
+        764 Entertainment is an independent game studio
+        based in the United States.
+      </p>
+
+    </div>
+
+    <div class="about-grid">
+
+      <div class="card">
+
+        <h3>
+          Our Focus
+        </h3>
+
+        <p>
+          We build action-focused games designed around
+          fast decision-making, expressive movement,
+          and satisfying moment-to-moment gameplay.
+        </p>
+
+        <br />
+
+        <p>
+          Our goal is to create stylish and replayable
+          experiences with strong gameplay identity
+          and long-term community-driven development.
+        </p>
+
+      </div>
+
+      <div class="info-list">
+
+        <div class="info-item">
+          <strong>Studio Type</strong>
+          <span>Independent game studio</span>
+        </div>
+
+        <div class="info-item">
+          <strong>Location</strong>
+          <span>Based in the United States</span>
+        </div>
+
+        <div class="info-item">
+          <strong>Focus</strong>
+          <span>Fast-paced action, movement, and replayability</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- GAMES -->
+
+  <section id="games">
+
+    <div class="section-header">
+
+      <h2>
+        Our Games
+      </h2>
+
+      <p>
+        Explore current and upcoming projects
+        from 764 Entertainment.
+      </p>
+
+    </div>
+
+    <div class="games-grid">
+
+      <div class="game-card">
+
+        <div class="game-content">
+
+          <div class="tag-row">
+
+            <span class="tag">
+              Open Alpha
+            </span>
+
+            <span class="tag tag-purple">
+              In Development
+            </span>
+
+          </div>
+
+          <h3>
+            Velocity Protocol
+          </h3>
+
+          <p>
+            A fast-paced movement-shooter roguelike
+            built around speed, flow, parkour,
+            and high-impact combat.
+          </p>
+
+          <div class="website-link">
+
+            <a
+              href="https://playvelocityprotocol.com"
+              class="btn btn-secondary"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              playvelocityprotocol.com
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+
+    <div class="card">
+
+      <div class="section-header">
+
+        <h2>
+          Contact
+        </h2>
+
+        <p>
+          For press, business, or general inquiries,
+          reach out to 764 Entertainment.
+        </p>
+
+      </div>
+
+      <div class="contact-links">
+
+        <a
+          href="mailto:hello@764entertainment.com"
+          class="btn btn-primary"
+        >
+          hello@764entertainment.com
+        </a>
+
+        <a
+          href="https://www.youtube.com/@764Entertainment"
+          class="btn btn-secondary"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          YouTube Channel
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer class="footer">
+
+    <span>
+      © 2026 764 Entertainment. All rights reserved.
+    </span>
+
+    <span>
+      Independent Game Studio
+    </span>
+
+  </footer>
+
+</body>
+</html>
