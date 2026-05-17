@@ -4,7 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>764 Entertainment</title>
-  <link rel="icon" type="image/x-icon" href="764Logo.ico">
+  <link rel="icon" type="image/x-icon" href="764LogoICO.ico">
+  <meta name="keywords" content="764 Entertainment, Velocity Protocol, indie game studio, 764 Games, 764,[764], Seven Sixty Four Entertainment, movement shooter">
+  <meta name="description" content="764 Entertainment is an indie game studio, based in the United States, specializing in fast-paced movement shooters.">
+
+
 
   <style>
 
@@ -427,13 +431,109 @@
       gap: 14px;
     }
 
-    /* CONTACT */
+/* CONTACT */
 
-    .contact-links {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
+.contact-card {
+  position: relative;
+  overflow: hidden;
+  padding: 34px;
+}
+
+.contact-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, rgba(53,214,255,0.08), transparent 36%),
+    radial-gradient(circle at top right, rgba(139,92,246,0.16), transparent 42%);
+  pointer-events: none;
+}
+
+.contact-content {
+  position: relative;
+  z-index: 2;
+}
+
+.contact-links {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.contact-link {
+  min-height: 118px;
+  padding: 20px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.045);
+  border: 1px solid rgba(255,255,255,0.09);
+  transition: 0.22s ease;
+}
+
+.contact-link strong {
+  display: block;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.contact-link span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.9rem;
+  word-break: break-word;
+}
+
+.contact-link:hover {
+  transform: translateY(-4px);
+  border-color: var(--link-border);
+  background: var(--link-bg);
+  box-shadow: 0 16px 45px var(--link-shadow);
+}
+
+.contact-email {
+  --link-bg: rgba(53,214,255,0.10);
+  --link-border: rgba(53,214,255,0.55);
+  --link-shadow: rgba(53,214,255,0.16);
+}
+
+.contact-youtube {
+  --link-bg: rgba(255,0,0,0.10);
+  --link-border: rgba(255,0,0,0.55);
+  --link-shadow: rgba(255,0,0,0.18);
+}
+
+.contact-indiedb {
+  --link-bg: rgba(92,184,92,0.10);
+  --link-border: rgba(92,184,92,0.55);
+  --link-shadow: rgba(92,184,92,0.16);
+}
+
+.contact-itch {
+  --link-bg: rgba(250,92,92,0.12);
+  --link-border: rgba(250,92,92,0.58);
+  --link-shadow: rgba(250,92,92,0.18);
+}
+
+@media (max-width: 1000px) {
+  .contact-links {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 800px) {
+  .contact-card {
+    padding: 24px;
+  }
+
+  .contact-links {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .contact-link {
+    min-height: auto;
+    padding: 18px;
+  }
+}
 
     /* FOOTER */
 
@@ -747,21 +847,23 @@
 
   </section>
 
-  <!-- CONTACT -->
+<!-- CONTACT -->
 
-  <section id="contact">
+<section id="contact">
 
-    <div class="card">
+  <div class="card contact-card">
+
+    <div class="contact-content">
 
       <div class="section-header">
 
         <h2>
-          Contact
+          Contact & Links
         </h2>
 
         <p>
-          For press, business, or general inquiries,
-          reach out to 764 Entertainment.
+          For press, business, or general inquiries, reach out to
+          764 Entertainment or follow the studio online.
         </p>
 
       </div>
@@ -770,25 +872,49 @@
 
         <a
           href="mailto:hello@764entertainment.com"
-          class="btn btn-primary"
+          class="contact-link contact-email"
         >
-          hello@764entertainment.com
+          <strong>Email</strong>
+          <span>hello@764entertainment.com</span>
         </a>
 
         <a
           href="https://www.youtube.com/@764Entertainment"
-          class="btn btn-secondary"
+          class="contact-link contact-youtube"
           target="_blank"
           rel="noopener noreferrer"
         >
-          YouTube Channel
+          <strong>YouTube</strong>
+          <span>@764Entertainment</span>
+        </a>
+
+        <a
+          href="https://www.indiedb.com/members/764entertainment"
+          class="contact-link contact-indiedb"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <strong>IndieDB</strong>
+          <span>764 Entertainment profile</span>
+        </a>
+
+        <a
+          href="https://764entertainment.itch.io/"
+          class="contact-link contact-itch"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <strong>itch.io</strong>
+          <span>764entertainment.itch.io</span>
         </a>
 
       </div>
 
     </div>
 
-  </section>
+  </div>
+
+</section>
 
   <!-- FOOTER -->
 
